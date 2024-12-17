@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">ToDo List</h1>
+    </div>
+
+
+    <div class="main-window">
+        <div class="container">
+            <div class="menu">
+                <form class="menu__form form">
+                    <input type="text" class="form__input" placeholder="Сделать удаление завершенных и всех">
+                    <input type="submit" class="form__submit" value="Добавить">
+                </form>
+                <hr class="menu__hr">
+            </div>
+        </div>
+
+        <div class="tasks">
+            <div class="container">
+                <div class="list">
+                    <div class="tasks__task task">
+                        <input type="checkbox" class="task__checkbox">
+                        <p class="task__text">Сделать удаление каждого элемента по крестику справа</p>
+                        <p class="task__delete">❌</p>
+                    </div>
+                    <div class="tasks__task task">
+                        <input type="checkbox" class="task__checkbox">
+                        <p class="task__text">Сделать добавление элементов в список</p>
+                        <p class="task__delete">❌</p>
+                    </div>
+                    <div class="tasks__task task">
+                        <input type="checkbox" class="task__checkbox">
+                        <p class="task__text">Сверстать тудушку</p>
+                        <p class="task__delete">❌</p>
+                    </div>
+                    <div class="tasks__task task">
+                        <input type="checkbox" class="task__checkbox">
+                        <p class="task__text">Сдать теорию</p>
+                        <p class="task__delete">❌</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <footer class="footer">
+                <div class="footer__buttons button">
+                    <button class="button__gray">Удалить завершенные</button>
+                    <button class="button__red">Удалить все</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
