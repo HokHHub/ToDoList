@@ -1,8 +1,14 @@
+.tasks {
+    max-width: 594px;
+    padding: 0 24px;
+    width: 100%;
+}
+
 .task {
     display: flex;
     align-items: center;
 
-    &__lists{
+    &__lists {
         margin: 0;
         padding: 0;
     }
@@ -13,12 +19,13 @@
         flex-shrink: 0;
         margin: 0;
         cursor: pointer;
-        margin-left: 24px;
+        // margin-left: 24px;
         margin-right: 16px;
+        margin-left: 0;
         accent-color: #7749F8;
         transition: 500ms;
 
-        &:checked + .task__text {
+        &:checked+.task__text {
             opacity: 0.5;
             text-decoration-line: line-through;
         }
@@ -31,6 +38,7 @@
         font-style: normal;
         font-weight: 400;
         line-height: 21px;
+        margin-right: 10px;
     }
 
     &__delete {
@@ -41,7 +49,6 @@
         font-style: normal;
         font-weight: 400;
         margin-left: auto;
-        margin-right: 24px;
         line-height: 21px;
         /* 131.25% */
     }
@@ -49,7 +56,8 @@
 
 .list {
     background: #FFF;
-    width: 594px;
+    max-width: 594px;
+    width: 100%;
     margin: 0 auto;
     flex-shrink: 0;
 }

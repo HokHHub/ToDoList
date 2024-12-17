@@ -1,6 +1,7 @@
 .menu {
-    width: 594px;
-    height: 87px;
+    max-width: 594px;
+    width: 100%;
+    // height: 87px;
     flex-shrink: 0;
     background: #FFF;
     margin: 0 auto;
@@ -8,10 +9,11 @@
 
     &__hr {
         // display: none;
-        width: 594px;
+        max-width: 594px;
+        width: 100%;
         height: 1px;
         flex-shrink: 0;
-        position: absolute;
+        // position: absolute;
         z-index: 10;
         border: 0;
         margin: 0;
@@ -62,9 +64,32 @@
         font-style: normal;
         font-weight: 600;
         line-height: normal;
+        transition: 0.5s;
+
+        &:hover{
+            background: #1b1b1c;
+        }
     }
 }
 
 .addradius {
     border-radius: 16px;
+}
+
+@media screen and (max-width: 640px) {
+    .menu {
+        &__form {
+            flex-direction: column;
+            gap: 14px;
+        }
+    }
+
+    .form {
+        &__input {
+            width: unset;
+        }
+        &__submit {
+            width: unset;
+        }
+    }
 }

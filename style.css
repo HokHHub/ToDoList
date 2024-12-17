@@ -1,5 +1,6 @@
 .container {
-  padding: 0 192px 0 194px;
+  padding: 0 24px;
+  margin: 0 auto;
 }
 
 @font-face {
@@ -39,18 +40,18 @@ body {
 }
 
 .menu {
-  width: 594px;
-  height: 87px;
+  max-width: 594px;
+  width: 100%;
   flex-shrink: 0;
   background: #FFF;
   margin: 0 auto;
   border-radius: 16px 16px 0 0;
 }
 .menu__hr {
-  width: 594px;
+  max-width: 594px;
+  width: 100%;
   height: 1px;
   flex-shrink: 0;
-  position: absolute;
   z-index: 10;
   border: 0;
   margin: 0;
@@ -97,10 +98,32 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  transition: 0.5s;
+}
+.form__submit:hover {
+  background: #1b1b1c;
 }
 
 .addradius {
   border-radius: 16px;
+}
+
+@media screen and (max-width: 640px) {
+  .menu__form {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .form__input {
+    width: unset;
+  }
+  .form__submit {
+    width: unset;
+  }
+}
+.tasks {
+  max-width: 594px;
+  padding: 0 24px;
+  width: 100%;
 }
 
 .task {
@@ -117,8 +140,8 @@ body {
   flex-shrink: 0;
   margin: 0;
   cursor: pointer;
-  margin-left: 24px;
   margin-right: 16px;
+  margin-left: 0;
   accent-color: #7749F8;
   transition: 500ms;
 }
@@ -133,6 +156,7 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 21px;
+  margin-right: 10px;
 }
 .task__delete {
   color: #000;
@@ -142,14 +166,14 @@ body {
   font-style: normal;
   font-weight: 400;
   margin-left: auto;
-  margin-right: 24px;
   line-height: 21px;
   /* 131.25% */
 }
 
 .list {
   background: #FFF;
-  width: 594px;
+  max-width: 594px;
+  width: 100%;
   margin: 0 auto;
   flex-shrink: 0;
 }
@@ -158,8 +182,8 @@ body {
   border-radius: 0px 0px 16px 16px;
   background: #F5F5F5;
   padding: 18px 24px;
-  width: 594px;
-  height: 75px;
+  max-width: 594px;
+  width: 100%;
   flex-shrink: 0;
   margin: 0 auto;
 }
@@ -177,13 +201,18 @@ body {
   border-radius: 4px;
   background: var(--Secondary-color, #6C757D);
   color: var(---Gray-White, #FFF);
-  text-align: center;
+  justify-content: center;
   font-family: "Inter";
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   cursor: pointer;
   line-height: normal;
+  text-align: center;
+  transition: 0.5s;
+}
+.button__gray:hover {
+  background: #383535;
 }
 
 .button__red {
@@ -191,6 +220,7 @@ body {
   padding: 10px 16px;
   align-items: center;
   border: 0;
+  justify-content: center;
   border-radius: 4px;
   background: var(---Status-Color-Danger, #DC3545);
   color: var(---Gray-White, #FFF);
@@ -201,8 +231,19 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  transition: 0.5s;
+}
+.button__red:hover {
+  background: #8a1520;
 }
 
 .dnone {
   display: none;
+}
+
+@media screen and (max-width: 450px) {
+  .footer__buttons {
+    flex-direction: column;
+    gap: 14px;
+  }
 }/*# sourceMappingURL=style.css.map */

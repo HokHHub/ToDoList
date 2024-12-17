@@ -3,6 +3,14 @@ let input = document.querySelector(".form__input");
 let taskList = document.querySelector(".list");
 let deleteCompletedButton = document.querySelector(".button__gray");
 let deleteAllButton = document.querySelector(".button__red");
+let deleteCross = document.querySelector('.task__delete')
+
+function attachDeleteEvent(deleteButton) {
+    deleteButton.addEventListener('click', () => {
+        deleteButton.closest('.task').remove()
+        checklist()
+    })
+}
 
 function createTask(text) {
     let task = document.createElement("div");
@@ -19,6 +27,7 @@ function createTask(text) {
     let deleteButton = document.createElement("p");
     deleteButton.className = "task__delete";
     deleteButton.textContent = "❌";
+    attachDeleteEvent(deleteButton)
 
     task.appendChild(checkbox);
     task.appendChild(taskText);
@@ -73,4 +82,3 @@ function checklist() {
     }
 
 }
-

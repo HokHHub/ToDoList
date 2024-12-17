@@ -2,8 +2,8 @@
     border-radius: 0px 0px 16px 16px;
     background: #F5F5F5;
     padding: 18px 24px;
-    width: 594px;
-    height: 75px;
+    max-width: 594px;
+    width: 100%;
     flex-shrink: 0;
     margin: 0 auto;
 
@@ -23,13 +23,19 @@
     border-radius: 4px;
     background: var(--Secondary-color, #6C757D);
     color: var(---Gray-White, #FFF);
-    text-align: center;
+    justify-content: center;
     font-family: 'Inter';
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     cursor: pointer;
     line-height: normal;
+    text-align: center;
+    transition: 0.5s;
+
+    &:hover {
+        background: #383535;
+    }
 }
 
 .button__red {
@@ -37,6 +43,7 @@
     padding: 10px 16px;
     align-items: center;
     border: 0;
+    justify-content: center;
     border-radius: 4px;
     background: var(---Status-Color-Danger, #DC3545);
     color: var(---Gray-White, #FFF);
@@ -47,8 +54,20 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    transition: 0.5s;
+
+    &:hover {
+        background: #8a1520;
+    }
 }
 
-.dnone{
+.dnone {
     display: none;
+}
+
+@media screen and (max-width: 450px) {
+    .footer__buttons {
+        flex-direction: column;
+        gap: 14px;
+    }
 }
