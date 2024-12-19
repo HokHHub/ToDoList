@@ -44,28 +44,18 @@ function createTask(text) {
     let task = document.createElement("div");
     task.className = "tasks__task task";
 
-    let checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.className = "task__checkbox";
-
-    let taskText = document.createElement("p");
-    taskText.className = "task__text";
-    taskText.textContent = text;
-
-    let editButton = document.createElement('p')
-    editButton.className = "task__edit";
-    editButton.textContent = "✏️";
-
-    let deleteButton = document.createElement("p");
-    deleteButton.className = "task__delete";
-    deleteButton.textContent = "🗑";
-    attachEditEvent(editButton)
+    task.innerHTML = `
+        <input type="checkbox" class="task__checkbox">
+        <p class="task__text">${text}</p>
+        <p class="task__edit">✏️</p>
+        <p class="task__delete">🗑</p>
+    `;
+    
+    let editButton = task.querySelector(".task__edit");
+    let deleteButton = task.querySelector(".task__delete");
     attachDeleteEvent(deleteButton)
+    attachEditEvent(editButton)
 
-    task.appendChild(checkbox);
-    task.appendChild(taskText);
-    task.appendChild(editButton);
-    task.appendChild(deleteButton);
     taskList.appendChild(task);
     checklist()
 }
