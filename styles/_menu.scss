@@ -26,6 +26,23 @@
         padding: 24px;
         gap: 24px;
     }
+
+    &__input {
+        width: 450px;
+        padding-left: 17px;
+        ;
+        height: 38px;
+        border: 1px solid gray;
+        opacity: 0.9;
+        font-family: 'Inter';
+        border-radius: 3px;
+        color: var(--Secondary-Dark-Color, #54595E);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 21px;
+        flex-shrink: 0;
+    }
 }
 
 .form {
@@ -66,7 +83,7 @@
         line-height: normal;
         transition: 0.5s;
 
-        &:hover{
+        &:hover {
             background: #1b1b1c;
         }
     }
@@ -88,6 +105,7 @@
         &__input {
             width: unset;
         }
+
         &__submit {
             width: unset;
         }

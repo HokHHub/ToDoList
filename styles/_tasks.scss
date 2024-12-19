@@ -48,9 +48,19 @@
         cursor: pointer;
         font-style: normal;
         font-weight: 400;
-        margin-left: auto;
         line-height: 21px;
-        /* 131.25% */
+    }
+
+    &__edit {
+        color: #000;
+        font-family: 'Inter';
+        font-size: 16px;
+        cursor: pointer;
+        font-style: normal;
+        font-weight: 400;
+        margin-right: 16px;
+        line-height: 21px;
+        margin-left: auto;
     }
 }
 

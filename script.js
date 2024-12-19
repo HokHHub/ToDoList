@@ -12,6 +12,34 @@ function attachDeleteEvent(deleteButton) {
     })
 }
 
+function attachEditEvent(editButton) {
+    editButton.addEventListener('click', () => {
+        let taskElement = editButton.closest('.task');
+        let taskTextElement = taskElement.querySelector('p.task__text');
+
+        if (editButton.textContent === '✏️') {
+            // Начало редактирования
+            let input = document.createElement('input');
+            input.className = 'menu__input';
+            input.value = taskTextElement.textContent;
+            taskTextElement.replaceWith(input);
+            editButton.textContent = '✅';
+        } else {
+            // Завершение редактирования
+            let input = taskElement.querySelector('input.menu__input');
+            if (input) {
+                let newText = document.createElement('p');
+                newText.className = 'task__text';
+                newText.textContent = input.value;
+                input.replaceWith(newText);
+                editButton.textContent = '✏️';
+            }
+        }
+    });
+}
+
+
+
 function createTask(text) {
     let task = document.createElement("div");
     task.className = "tasks__task task";
@@ -24,13 +52,19 @@ function createTask(text) {
     taskText.className = "task__text";
     taskText.textContent = text;
 
+    let editButton = document.createElement('p')
+    editButton.className = "task__edit";
+    editButton.textContent = "✏️";
+
     let deleteButton = document.createElement("p");
     deleteButton.className = "task__delete";
-    deleteButton.textContent = "❌";
+    deleteButton.textContent = "🗑";
+    attachEditEvent(editButton)
     attachDeleteEvent(deleteButton)
 
     task.appendChild(checkbox);
     task.appendChild(taskText);
+    task.appendChild(editButton);
     task.appendChild(deleteButton);
     taskList.appendChild(task);
     checklist()
@@ -60,7 +94,7 @@ deleteAllButton.addEventListener("click", () => {
 });
 
 
-let flag = true
+let flag = false
 function checklist() {
     let checklist = document.querySelector('.task')
     let menu = document.querySelector('.menu')

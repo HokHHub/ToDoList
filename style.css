@@ -63,6 +63,21 @@ body {
   padding: 24px;
   gap: 24px;
 }
+.menu__input {
+  width: 450px;
+  padding-left: 17px;
+  height: 38px;
+  border: 1px solid gray;
+  opacity: 0.9;
+  font-family: "Inter";
+  border-radius: 3px;
+  color: var(--Secondary-Dark-Color, #54595E);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  flex-shrink: 0;
+}
 
 .form__input {
   width: 356px;
@@ -165,9 +180,18 @@ body {
   cursor: pointer;
   font-style: normal;
   font-weight: 400;
-  margin-left: auto;
   line-height: 21px;
-  /* 131.25% */
+}
+.task__edit {
+  color: #000;
+  font-family: "Inter";
+  font-size: 16px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 400;
+  margin-right: 16px;
+  line-height: 21px;
+  margin-left: auto;
 }
 
 .list {
