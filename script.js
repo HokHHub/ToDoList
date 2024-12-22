@@ -4,6 +4,21 @@ let taskList = document.querySelector(".list");
 let deleteCompletedButton = document.querySelector(".button__gray");
 let deleteAllButton = document.querySelector(".button__red");
 let deleteCross = document.querySelector('.task__delete')
+let localStorage = window.localStorage
+let save = []
+let checkbox = document.querySelectorAll('.task__checkbox')
+
+
+if (localStorage.getItem('item') != undefined) {
+    let items = JSON.parse(localStorage.getItem('item'))
+    for (let index = 0; index < items.length; index++) {
+        createTask(items[index]['text'], items[index]['checkbox'])
+    }
+
+
+}
+checklist()
+
 
 function attachDeleteEvent(deleteButton) {
     deleteButton.addEventListener('click', () => {
@@ -40,25 +55,38 @@ function attachEditEvent(editButton) {
 
 
 
-function createTask(text) {
+function createTask(text, checkbox = false) {
     let task = document.createElement("div");
     task.className = "tasks__task task";
 
-    task.innerHTML = `
+    if (!checkbox) {
+        task.innerHTML = `
         <input type="checkbox" class="task__checkbox">
         <p class="task__text">${text}</p>
         <p class="task__edit">✏️</p>
         <p class="task__delete">🗑</p>
     `;
-    
+    } else {
+        task.innerHTML = `
+        <input type="checkbox" class="task__checkbox" checked>
+        <p class="task__text">${text}</p>
+        <p class="task__edit">✏️</p>
+        <p class="task__delete">🗑</p>
+    `;
+    }
+
     let editButton = task.querySelector(".task__edit");
     let deleteButton = task.querySelector(".task__delete");
     attachDeleteEvent(deleteButton)
     attachEditEvent(editButton)
 
     taskList.appendChild(task);
+
+    save.push({ 'text': text, 'checkbox': checkbox })
+    localStorage.setItem('item', JSON.stringify(save))
     checklist()
 }
+
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -72,37 +100,60 @@ form.addEventListener("submit", (event) => {
 
 deleteCompletedButton.addEventListener("click", () => {
     let completedTasks = document.querySelectorAll(".task__checkbox:checked");
+
     completedTasks.forEach((checkbox) => {
         checkbox.closest(".task").remove();
     });
+
+    for (let index = 0; index < save.length; index++) {
+        if (Boolean(save[index].checkbox)) {
+            save.splice(index, 1)
+            localStorage.setItem('item', JSON.stringify(save))
+        }
+
+    }
+
     checklist()
+
 });
 
 deleteAllButton.addEventListener("click", () => {
     taskList.innerHTML = "";
     checklist()
+    save = []
+    localStorage.removeItem('item')
 });
 
 
-let flag = false
 function checklist() {
-    let checklist = document.querySelector('.task')
+    let checklist = document.querySelectorAll('.task')
     let menu = document.querySelector('.menu')
     let hr = document.querySelector('.menu__hr')
     let footer = document.querySelector('.footer')
 
-    if (!checklist) {
+    if (!checklist.length) {
         footer.classList.add('dnone')
         menu.classList.add('addradius')
         hr.classList.add('dnone')
-        flag = false
-    }
-
-    if (checklist && flag == false) {
+    } else {
         footer.classList.remove('dnone')
         menu.classList.remove('addradius')
         hr.classList.remove('dnone')
-        flag = true
     }
 
+    checklist.forEach((task, index) => {
+        let checkbox = task.querySelector('.task__checkbox')
+        checkbox.addEventListener('change', () => {
+            save[index].checkbox = checkbox.checked
+            localStorage.setItem('item', JSON.stringify(save))
+        })
+    })
+
+    // checklist.forEach((task, index) => {
+    //     let del = task.querySelector('.task__del')
+    //     del.addEventListener('click', () => {
+    //         save.splice(index, 1)
+    //         localStorage.setItem('item', JSON.stringify(save))
+    //     })
+    // })
 }
