@@ -22,8 +22,12 @@ checklist()
 
 function attachDeleteEvent(deleteButton) {
     deleteButton.addEventListener('click', () => {
+        let taskElement = deleteButton.closest('.task');
+        let taskIndex = Array.from(taskList.children).indexOf(taskElement);
         deleteButton.closest('.task').remove()
         checklist()
+        save.splice(taskIndex, 1);
+        localStorage.setItem('item', JSON.stringify(save));
     })
 }
 
@@ -46,6 +50,9 @@ function attachEditEvent(editButton) {
                 let newText = document.createElement('p');
                 newText.className = 'task__text';
                 newText.textContent = input.value;
+                let taskIndex = Array.from(taskList.children).indexOf(taskElement);
+                save[taskIndex].text = input.value;
+                localStorage.setItem('item', JSON.stringify(save));
                 input.replaceWith(newText);
                 editButton.textContent = '✏️';
             }
@@ -148,12 +155,4 @@ function checklist() {
             localStorage.setItem('item', JSON.stringify(save))
         })
     })
-
-    // checklist.forEach((task, index) => {
-    //     let del = task.querySelector('.task__del')
-    //     del.addEventListener('click', () => {
-    //         save.splice(index, 1)
-    //         localStorage.setItem('item', JSON.stringify(save))
-    //     })
-    // })
 }
